@@ -1,25 +1,8 @@
 // Typed shapes mirroring supabase/migrations/0001_init.sql.
-// Hand-maintained for now; regenerate via `supabase gen types typescript` after schema changes.
-
-export type GoalCategory =
-  | "financial"
-  | "career"
-  | "relationship"
-  | "learning"
-  | "fitness"
-  | "social"
-  | "business"
-  | "monthly"
-  | "vision"
-  | "dream";
-
-export type GoalStatus = "active" | "paused" | "completed" | "abandoned";
 
 export type HabitKind = "positive" | "negative";
 
-export type MessageRole = "user" | "assistant" | "system";
-
-export type InsightScope = "daily" | "weekly" | "monthly" | "onboarding";
+export type InsightScope = "onboarding" | "daily" | "weekly" | "monthly";
 
 export interface Profile {
   id: string;
@@ -73,35 +56,6 @@ export interface RoutineProfile {
   updated_at: string;
 }
 
-export interface HealthProfile {
-  user_id: string;
-  sleep_quality: number | null;
-  exercise_freq_per_week: number | null;
-  fitness_goals: string | null;
-  water_liters: number | null;
-  diet_quality: number | null;
-  caffeine_mg: number | null;
-  mental_state: number | null;
-  stress_triggers: string | null;
-  energy_crashes: string | null;
-  medical_limits: string | null;
-  updated_at: string;
-}
-
-export interface Goal {
-  id: string;
-  user_id: string;
-  category: GoalCategory;
-  title: string;
-  description: string | null;
-  target_date: string | null;
-  priority: number;
-  status: GoalStatus;
-  progress: number;
-  created_at: string;
-  updated_at: string;
-}
-
 export interface Habit {
   id: string;
   user_id: string;
@@ -124,37 +78,6 @@ export interface HabitLog {
   value: number;
   completed: boolean;
   note: string | null;
-  created_at: string;
-}
-
-export interface DailyCheckIn {
-  id: string;
-  user_id: string;
-  check_date: string;
-  wake_time: string | null;
-  sleep_hours: number | null;
-  mood: number | null;
-  energy: number | null;
-  main_goal: string | null;
-  workout: boolean;
-  deep_work: boolean;
-  biggest_distraction: string | null;
-  productivity_rating: number | null;
-  wins: string | null;
-  failures: string | null;
-  tomorrow_focus: string | null;
-  daily_score: number | null;
-  ai_summary: string | null;
-  created_at: string;
-}
-
-export interface CoachMessage {
-  id: string;
-  user_id: string;
-  role: MessageRole;
-  content: string;
-  tokens_in: number | null;
-  tokens_out: number | null;
   created_at: string;
 }
 

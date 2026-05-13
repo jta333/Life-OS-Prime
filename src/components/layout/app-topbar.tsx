@@ -1,15 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { format } from "date-fns";
-import {
-  Flame,
-  Sparkles,
-  Settings,
-  ChevronRight,
-} from "lucide-react";
+import { Flame, Sparkles, ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { initials } from "@/lib/utils";
 
 interface AppTopbarProps {
@@ -42,17 +35,6 @@ export function AppTopbar({ name, streak, isDemo }: AppTopbarProps) {
           <Flame className="size-3" />
           {streak}-day streak
         </Badge>
-        <Button asChild size="sm" variant="outline" className="hidden sm:inline-flex">
-          <Link href="/check-in">
-            <Sparkles className="size-3.5" />
-            Daily check-in
-          </Link>
-        </Button>
-        <Button asChild variant="ghost" size="icon-sm">
-          <Link href="/settings" aria-label="Settings">
-            <Settings className="size-4" />
-          </Link>
-        </Button>
         <div className="ml-1 flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-gold/70 to-amber/40 text-xs font-semibold text-[oklch(0.18_0.02_70)] ring-1 ring-gold/30">
           {initials(name)}
         </div>

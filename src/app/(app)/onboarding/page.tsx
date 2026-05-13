@@ -8,7 +8,7 @@ export default function OnboardingPage() {
       <SectionHeading
         label="Phase 1 · Life Analysis"
         title="Welcome to LIFE OS PRIME."
-        description="We'll capture four sections — basic life structure, daily routine, health system, and goals. Two minutes per section. After this, every panel becomes yours."
+        description="Two sections — basic life structure and daily routine. Three minutes total. After this, every panel becomes yours."
         icon={Sparkles}
       />
       <OnboardingWizard />

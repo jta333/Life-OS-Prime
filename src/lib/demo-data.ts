@@ -2,24 +2,20 @@
 // Lets the app render an interactive preview without any backend.
 
 import { format, subDays } from "date-fns";
+import { SINGLE_USER_ID } from "@/lib/constants";
 import type {
-  CoachMessage,
-  DailyCheckIn,
-  Goal,
   Habit,
   HabitLog,
-  HealthProfile,
   Insight,
   Profile,
   RoutineProfile,
   Scores,
 } from "@/types/database";
 
-const DEMO_USER_ID = "00000000-0000-0000-0000-000000000001";
 const today = new Date();
 
 export const DEMO_PROFILE: Profile = {
-  id: DEMO_USER_ID,
+  id: SINGLE_USER_ID,
   name: "Alex Mercer",
   age: 29,
   country: "United States",
@@ -41,7 +37,7 @@ export const DEMO_PROFILE: Profile = {
 };
 
 export const DEMO_SCORES: Scores = {
-  user_id: DEMO_USER_ID,
+  user_id: SINGLE_USER_ID,
   productivity: 78,
   discipline: 71,
   lifestyle: 64,
@@ -54,7 +50,7 @@ export const DEMO_SCORES: Scores = {
 };
 
 export const DEMO_ROUTINE: RoutineProfile = {
-  user_id: DEMO_USER_ID,
+  user_id: SINGLE_USER_ID,
   wake_time: "06:00",
   sleep_time: "23:00",
   morning_routine: "Cold shower, 10-min meditation, espresso, 30-min reading",
@@ -74,116 +70,19 @@ export const DEMO_ROUTINE: RoutineProfile = {
   updated_at: today.toISOString(),
 };
 
-export const DEMO_HEALTH: HealthProfile = {
-  user_id: DEMO_USER_ID,
-  sleep_quality: 7,
-  exercise_freq_per_week: 5,
-  fitness_goals: "Sub-3:30 marathon, 5×5 bodyweight squat at 1.5×bodyweight",
-  water_liters: 2.5,
-  diet_quality: 7,
-  caffeine_mg: 200,
-  mental_state: 7,
-  stress_triggers: "Tight deadlines, social media before bed, weekend planning gaps",
-  energy_crashes: "Post-lunch slump around 14:00",
-  medical_limits: "None significant; mild patellar tendonitis on right knee",
-  updated_at: today.toISOString(),
-};
-
-export const DEMO_GOALS: Goal[] = [
-  {
-    id: "g1",
-    user_id: DEMO_USER_ID,
-    category: "business",
-    title: "Launch SaaS MVP",
-    description: "Ship a paid v1 to 25 early customers.",
-    target_date: format(subDays(today, -120), "yyyy-MM-dd"),
-    priority: 1,
-    status: "active",
-    progress: 42,
-    created_at: subDays(today, 60).toISOString(),
-    updated_at: today.toISOString(),
-  },
-  {
-    id: "g2",
-    user_id: DEMO_USER_ID,
-    category: "fitness",
-    title: "Sub-3:30 marathon",
-    description: "Train through 16-week block, race in spring.",
-    target_date: format(subDays(today, -180), "yyyy-MM-dd"),
-    priority: 2,
-    status: "active",
-    progress: 28,
-    created_at: subDays(today, 45).toISOString(),
-    updated_at: today.toISOString(),
-  },
-  {
-    id: "g3",
-    user_id: DEMO_USER_ID,
-    category: "financial",
-    title: "Build $50k emergency fund",
-    description: "Automated $2.5k/month to high-yield savings.",
-    target_date: format(subDays(today, -300), "yyyy-MM-dd"),
-    priority: 2,
-    status: "active",
-    progress: 55,
-    created_at: subDays(today, 100).toISOString(),
-    updated_at: today.toISOString(),
-  },
-  {
-    id: "g4",
-    user_id: DEMO_USER_ID,
-    category: "learning",
-    title: "Read 24 books this year",
-    description: "Mix of fiction, business, and systems thinking.",
-    target_date: format(subDays(today, -270), "yyyy-MM-dd"),
-    priority: 3,
-    status: "active",
-    progress: 33,
-    created_at: subDays(today, 30).toISOString(),
-    updated_at: today.toISOString(),
-  },
-  {
-    id: "g5",
-    user_id: DEMO_USER_ID,
-    category: "relationship",
-    title: "Weekly date nights",
-    description: "Protect a fixed evening every week.",
-    target_date: null,
-    priority: 3,
-    status: "active",
-    progress: 70,
-    created_at: subDays(today, 30).toISOString(),
-    updated_at: today.toISOString(),
-  },
-  {
-    id: "g6",
-    user_id: DEMO_USER_ID,
-    category: "vision",
-    title: "Sovereign operator by 32",
-    description: "Run own profitable company, optimal health, deep relationships.",
-    target_date: null,
-    priority: 1,
-    status: "active",
-    progress: 22,
-    created_at: subDays(today, 90).toISOString(),
-    updated_at: today.toISOString(),
-  },
-];
-
 export const DEMO_HABITS: Habit[] = [
-  { id: "h1",  user_id: DEMO_USER_ID, name: "Wake up on time",           kind: "positive", icon: "sunrise",   color: "amber",   target: 1, target_unit: "check", sort_order: 1,  archived: false, created_at: today.toISOString() },
-  { id: "h2",  user_id: DEMO_USER_ID, name: "Deep work completed",       kind: "positive", icon: "brain",     color: "cyan",    target: 1, target_unit: "check", sort_order: 2,  archived: false, created_at: today.toISOString() },
-  { id: "h3",  user_id: DEMO_USER_ID, name: "Workout done",              kind: "positive", icon: "dumbbell",  color: "emerald", target: 1, target_unit: "check", sort_order: 3,  archived: false, created_at: today.toISOString() },
-  { id: "h4",  user_id: DEMO_USER_ID, name: "Reading done",              kind: "positive", icon: "book-open", color: "violet",  target: 1, target_unit: "check", sort_order: 4,  archived: false, created_at: today.toISOString() },
-  { id: "h5",  user_id: DEMO_USER_ID, name: "Healthy eating",            kind: "positive", icon: "apple",     color: "emerald", target: 1, target_unit: "check", sort_order: 5,  archived: false, created_at: today.toISOString() },
-  { id: "h6",  user_id: DEMO_USER_ID, name: "Water target",              kind: "positive", icon: "droplets",  color: "cyan",    target: 1, target_unit: "check", sort_order: 6,  archived: false, created_at: today.toISOString() },
-  { id: "h7",  user_id: DEMO_USER_ID, name: "Meditation",                kind: "positive", icon: "sparkles",  color: "violet",  target: 1, target_unit: "check", sort_order: 7,  archived: false, created_at: today.toISOString() },
-  { id: "h8",  user_id: DEMO_USER_ID, name: "No procrastination",        kind: "negative", icon: "shield",    color: "gold",    target: 1, target_unit: "check", sort_order: 8,  archived: false, created_at: today.toISOString() },
-  { id: "h9",  user_id: DEMO_USER_ID, name: "No excessive social media", kind: "negative", icon: "phone-off", color: "rose",    target: 1, target_unit: "check", sort_order: 9,  archived: false, created_at: today.toISOString() },
-  { id: "h10", user_id: DEMO_USER_ID, name: "Sleep target achieved",     kind: "positive", icon: "moon",      color: "cyan",    target: 1, target_unit: "check", sort_order: 10, archived: false, created_at: today.toISOString() },
+  { id: "h1",  user_id: SINGLE_USER_ID, name: "Wake up on time",           kind: "positive", icon: "sunrise",   color: "amber",   target: 1, target_unit: "check", sort_order: 1,  archived: false, created_at: today.toISOString() },
+  { id: "h2",  user_id: SINGLE_USER_ID, name: "Deep work completed",       kind: "positive", icon: "brain",     color: "cyan",    target: 1, target_unit: "check", sort_order: 2,  archived: false, created_at: today.toISOString() },
+  { id: "h3",  user_id: SINGLE_USER_ID, name: "Workout done",              kind: "positive", icon: "dumbbell",  color: "emerald", target: 1, target_unit: "check", sort_order: 3,  archived: false, created_at: today.toISOString() },
+  { id: "h4",  user_id: SINGLE_USER_ID, name: "Reading done",              kind: "positive", icon: "book-open", color: "violet",  target: 1, target_unit: "check", sort_order: 4,  archived: false, created_at: today.toISOString() },
+  { id: "h5",  user_id: SINGLE_USER_ID, name: "Healthy eating",            kind: "positive", icon: "apple",     color: "emerald", target: 1, target_unit: "check", sort_order: 5,  archived: false, created_at: today.toISOString() },
+  { id: "h6",  user_id: SINGLE_USER_ID, name: "Water target",              kind: "positive", icon: "droplets",  color: "cyan",    target: 1, target_unit: "check", sort_order: 6,  archived: false, created_at: today.toISOString() },
+  { id: "h7",  user_id: SINGLE_USER_ID, name: "Meditation",                kind: "positive", icon: "sparkles",  color: "violet",  target: 1, target_unit: "check", sort_order: 7,  archived: false, created_at: today.toISOString() },
+  { id: "h8",  user_id: SINGLE_USER_ID, name: "No procrastination",        kind: "negative", icon: "shield",    color: "gold",    target: 1, target_unit: "check", sort_order: 8,  archived: false, created_at: today.toISOString() },
+  { id: "h9",  user_id: SINGLE_USER_ID, name: "No excessive social media", kind: "negative", icon: "phone-off", color: "rose",    target: 1, target_unit: "check", sort_order: 9,  archived: false, created_at: today.toISOString() },
+  { id: "h10", user_id: SINGLE_USER_ID, name: "Sleep target achieved",     kind: "positive", icon: "moon",      color: "cyan",    target: 1, target_unit: "check", sort_order: 10, archived: false, created_at: today.toISOString() },
 ];
 
-// Deterministic pseudo-random for demo logs so each day looks consistent
 function rng(seed: number) {
   let s = seed;
   return () => {
@@ -204,7 +103,7 @@ export function buildDemoHabitLogs(days = 84): HabitLog[] {
       if (completed || r < baseline + 0.08) {
         logs.push({
           id: `${habit.id}-${d}`,
-          user_id: DEMO_USER_ID,
+          user_id: SINGLE_USER_ID,
           habit_id: habit.id,
           log_date: date,
           value: completed ? 1 : 0,
@@ -218,77 +117,43 @@ export function buildDemoHabitLogs(days = 84): HabitLog[] {
   return logs;
 }
 
-export function buildDemoCheckIns(days = 14): DailyCheckIn[] {
-  const out: DailyCheckIn[] = [];
-  for (let d = 0; d < days; d++) {
-    const r = rng(d * 17)();
-    out.push({
-      id: `c-${d}`,
-      user_id: DEMO_USER_ID,
-      check_date: format(subDays(today, d), "yyyy-MM-dd"),
-      wake_time: ["05:45", "06:00", "06:15", "06:30", "07:00"][d % 5]!,
-      sleep_hours: 6.5 + r * 2,
-      mood: Math.round(6 + r * 3),
-      energy: Math.round(5 + r * 4),
-      main_goal: ["Ship onboarding flow", "Run intervals", "Investor email", "Refactor billing", "Date night"][d % 5]!,
-      workout: r > 0.35,
-      deep_work: r > 0.3,
-      biggest_distraction: ["Slack", "Twitter", "News", "Email", "Meetings"][d % 5]!,
-      productivity_rating: Math.round(5 + r * 4),
-      wins: "Two deep work blocks, hit step goal, no junk food.",
-      failures: "Hit phone before bed; light sleep result.",
-      tomorrow_focus: "Morning deep work before email.",
-      daily_score: Math.round(60 + r * 35),
-      ai_summary:
-        "Solid execution with one recovery gap — protect morning focus and cap evening screens at 22:30.",
-      created_at: subDays(today, d).toISOString(),
-    });
-  }
-  return out;
-}
-
 export const DEMO_INSIGHTS: Insight[] = [
   {
     id: "i1",
-    user_id: DEMO_USER_ID,
-    scope: "weekly",
-    period_start: format(subDays(today, 7), "yyyy-MM-dd"),
-    period_end: format(today, "yyyy-MM-dd"),
+    user_id: SINGLE_USER_ID,
+    scope: "onboarding",
+    period_start: format(subDays(today, 21), "yyyy-MM-dd"),
+    period_end: null,
     payload: {
-      markdown: `## 📅 Weekly Performance Review
+      markdown: `## 🌅 Life Status Overview
 
-You operated at a **B+ baseline** with strong deep work but slipping evening discipline.
+You're operating at a **high-tier baseline** — a solid 73 Balance score with clear leverage points around evening discipline and energy recovery.
 
-## 📈 Productivity Trend
-\`████████░░ 78%\` — up 6 points from last week, driven by two protected mornings.
+## 📊 Performance Snapshot
+| Score | Bar | Verdict |
+|---|---|---|
+| Productivity 78 | \`████████░░\` | Strong, room to compound |
+| Discipline 71 | \`███████░░░\` | Solid baseline |
+| Lifestyle 64 | \`██████░░░░\` | Needs sleep + nutrition lift |
+| Stress Index 52 | \`█████░░░░░\` | Manageable, monitor weekly |
+| Balance 73 | \`███████░░░\` | High tier |
 
-## 🔥 Habit Consistency
-| Habit | Completions | Consistency | Verdict |
-|---|---|---|---|
-| Deep work | 5/7 | 71% | Strong |
-| Workout | 4/7 | 57% | Solid |
-| No social media | 3/7 | 43% | Needs work |
-| Sleep target | 4/7 | 57% | Solid |
+## 🔍 Initial Observations
+- Morning structure is intact — keep protecting the 06:00–10:30 window.
+- Evening screen time + light sleep are the dominant tax on tomorrow's energy.
+- Strength + Zone-2 mix is well calibrated for the marathon goal.
 
-## 🎯 Top 3 Improvements For Next Week
-1. **Cap screens at 22:30** — saves 35 min of sleep debt.
-2. **Move workout to morning** twice — links exercise to peak energy window.
-3. **One-block social media policy** — confine to 13:00–13:20 only.`,
+## ⚠️ Potential Risks
+- **Med** — Late phone use erodes 30–45 min of sleep quality nightly.
+- **Med** — Slack + X account for the 75 min daily waste; consolidate to one window.
+- **Low** — Right-knee tendonitis: monitor mileage progression.
+
+## 🚀 Improvement Potential
+- **+5 to Balance** — Phone in another room post-22:00 (8h sleep target).
+- **+7 to Focus** — Two no-Slack 90-min deep work windows daily.
+- **+4 to Lifestyle** — Move workout to morning twice a week, link to peak energy.`,
     },
     model: "demo",
     created_at: today.toISOString(),
-  },
-];
-
-export const DEMO_COACH_HISTORY: CoachMessage[] = [
-  {
-    id: "m1",
-    user_id: DEMO_USER_ID,
-    role: "assistant",
-    content:
-      "Welcome back, Alex. Your discipline trend is up 6 points — protect this momentum. What's the single focus you want to lock in today?",
-    tokens_in: null,
-    tokens_out: null,
-    created_at: subDays(today, 0).toISOString(),
   },
 ];

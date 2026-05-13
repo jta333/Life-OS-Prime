@@ -1,7 +1,8 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { createClient, getUser } from "@/lib/supabase/server";
+import { SINGLE_USER_ID } from "@/lib/constants";
+import { createClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 export async function toggleHabit(
@@ -10,17 +11,15 @@ export async function toggleHabit(
   completed: boolean
 ): Promise<{ ok: boolean; error?: string }> {
   if (!isSupabaseConfigured()) return { ok: true };
-  const user = await getUser();
-  if (!user) return { ok: false, error: "Not authenticated" };
 
-  const supabase = await createClient();
+  const supabase = createClient();
 
   if (completed) {
     const { error } = await supabase
       .from("habit_logs")
       .upsert(
         {
-          user_id: user.id,
+          user_id: SINGLE_USER_ID,
           habit_id: habitId,
           log_date: date,
           completed: true,

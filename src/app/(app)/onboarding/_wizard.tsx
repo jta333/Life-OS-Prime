@@ -19,59 +19,9 @@ import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { saveOnboarding } from "./actions";
+import type { OnboardingPayload } from "./actions";
 
-interface FormState {
-  // Section 1
-  name: string;
-  age: string;
-  country: string;
-  occupation: string;
-  mainGoals: string;
-  struggles: string;
-  personaGoal: string;
-  satisfaction: number;
-  stress: number;
-  discipline: number;
-  // Section 2
-  wakeTime: string;
-  sleepTime: string;
-  morningRoutine: string;
-  workSchedule: string;
-  exerciseHabits: string;
-  screenTimeHours: string;
-  socialMediaHours: string;
-  mealTiming: string;
-  waterLiters: string;
-  breakHabits: string;
-  focusMinutes: string;
-  peakHours: string;
-  distractions: string;
-  wastedMinutes: string;
-  currentHabits: string;
-  // Section 3
-  sleepQuality: number;
-  exerciseFreqPerWeek: string;
-  fitnessGoals: string;
-  dietQuality: number;
-  caffeineMg: string;
-  mentalState: number;
-  stressTriggers: string;
-  energyCrashes: string;
-  medicalLimits: string;
-  // Section 4 (goals captured as free-text per category for v1)
-  financialGoals: string;
-  careerGoals: string;
-  relationshipGoals: string;
-  learningGoals: string;
-  fitnessGoals2: string;
-  socialGoals: string;
-  businessGoals: string;
-  monthlyTargets: string;
-  vision: string;
-  dreams: string;
-}
-
-const INITIAL: FormState = {
+const INITIAL: OnboardingPayload = {
   name: "", age: "", country: "", occupation: "",
   mainGoals: "", struggles: "", personaGoal: "",
   satisfaction: 6, stress: 5, discipline: 6,
@@ -81,28 +31,23 @@ const INITIAL: FormState = {
   mealTiming: "", waterLiters: "2", breakHabits: "",
   focusMinutes: "90", peakHours: "", distractions: "",
   wastedMinutes: "60", currentHabits: "",
-  sleepQuality: 7, exerciseFreqPerWeek: "3", fitnessGoals: "",
-  dietQuality: 7, caffeineMg: "200", mentalState: 7,
-  stressTriggers: "", energyCrashes: "", medicalLimits: "",
-  financialGoals: "", careerGoals: "", relationshipGoals: "",
-  learningGoals: "", fitnessGoals2: "", socialGoals: "",
-  businessGoals: "", monthlyTargets: "", vision: "", dreams: "",
 };
 
 const SECTIONS = [
   { id: 1, label: "Basic life structure" },
   { id: 2, label: "Daily routine" },
-  { id: 3, label: "Health & energy" },
-  { id: 4, label: "Goals & ambition" },
 ] as const;
 
 export function OnboardingWizard() {
   const router = useRouter();
   const [step, setStep] = useState(1);
-  const [data, setData] = useState<FormState>(INITIAL);
+  const [data, setData] = useState<OnboardingPayload>(INITIAL);
   const [submitting, setSubmitting] = useState(false);
 
-  function update<K extends keyof FormState>(key: K, value: FormState[K]) {
+  function update<K extends keyof OnboardingPayload>(
+    key: K,
+    value: OnboardingPayload[K]
+  ) {
     setData((d) => ({ ...d, [key]: value }));
   }
 
@@ -166,8 +111,6 @@ export function OnboardingWizard() {
       <Card className="p-6 md:p-8">
         {step === 1 && <Section1 data={data} update={update} />}
         {step === 2 && <Section2 data={data} update={update} />}
-        {step === 3 && <Section3 data={data} update={update} />}
-        {step === 4 && <Section4 data={data} update={update} />}
 
         <Separator className="my-6" />
         <div className="flex items-center justify-between">
@@ -253,15 +196,15 @@ function Section1({
   data,
   update,
 }: {
-  data: FormState;
-  update: <K extends keyof FormState>(k: K, v: FormState[K]) => void;
+  data: OnboardingPayload;
+  update: <K extends keyof OnboardingPayload>(k: K, v: OnboardingPayload[K]) => void;
 }) {
   return (
     <div className="space-y-6">
       <Header
         label="Section 1"
         title="Basic life structure"
-        description="The foundation. Used to compute your Life Status Overview, Performance Snapshot, and Improvement Potential."
+        description="The foundation. Used to compute your Life Status Overview and Performance Snapshot."
       />
       <FieldRow>
         <Field label="Name">
@@ -299,15 +242,15 @@ function Section2({
   data,
   update,
 }: {
-  data: FormState;
-  update: <K extends keyof FormState>(k: K, v: FormState[K]) => void;
+  data: OnboardingPayload;
+  update: <K extends keyof OnboardingPayload>(k: K, v: OnboardingPayload[K]) => void;
 }) {
   return (
     <div className="space-y-6">
       <Header
         label="Section 2"
-        title="Daily routine analysis"
-        description="Used to build your daily timeline, energy curve, focus blocks and optimized routine."
+        title="Daily routine"
+        description="Used to compute your productivity, focus, energy and lifestyle scores."
       />
       <FieldRow>
         <Field label="Wake-up time">
@@ -320,12 +263,6 @@ function Section2({
       <Field label="Morning routine">
         <Textarea rows={2} value={data.morningRoutine} onChange={(e) => update("morningRoutine", e.target.value)} placeholder="Cold shower, meditation, espresso..." />
       </Field>
-      <Field label="Work / study schedule">
-        <Textarea rows={2} value={data.workSchedule} onChange={(e) => update("workSchedule", e.target.value)} />
-      </Field>
-      <Field label="Exercise habits">
-        <Textarea rows={2} value={data.exerciseHabits} onChange={(e) => update("exerciseHabits", e.target.value)} />
-      </Field>
       <FieldRow>
         <Field label="Screen time (hrs/day)">
           <Input type="number" step="0.1" value={data.screenTimeHours} onChange={(e) => update("screenTimeHours", e.target.value)} />
@@ -333,19 +270,11 @@ function Section2({
         <Field label="Social media (hrs/day)">
           <Input type="number" step="0.1" value={data.socialMediaHours} onChange={(e) => update("socialMediaHours", e.target.value)} />
         </Field>
-        <Field label="Water intake (L/day)">
+        <Field label="Water (L/day)">
           <Input type="number" step="0.1" value={data.waterLiters} onChange={(e) => update("waterLiters", e.target.value)} />
         </Field>
-        <Field label="Focus duration (min)">
+        <Field label="Focus window (min)">
           <Input type="number" value={data.focusMinutes} onChange={(e) => update("focusMinutes", e.target.value)} />
-        </Field>
-      </FieldRow>
-      <FieldRow>
-        <Field label="Meal timing">
-          <Input value={data.mealTiming} onChange={(e) => update("mealTiming", e.target.value)} placeholder="7:30, 12:30, 19:00" />
-        </Field>
-        <Field label="Break habits">
-          <Input value={data.breakHabits} onChange={(e) => update("breakHabits", e.target.value)} placeholder="Pomodoro, short walks..." />
         </Field>
         <Field label="Most productive hours">
           <Input value={data.peakHours} onChange={(e) => update("peakHours", e.target.value)} placeholder="08:00–11:00" />
@@ -359,99 +288,6 @@ function Section2({
       </Field>
       <Field label="Current habits">
         <Textarea rows={2} value={data.currentHabits} onChange={(e) => update("currentHabits", e.target.value)} placeholder="Reading, journaling, gym..." />
-      </Field>
-    </div>
-  );
-}
-
-function Section3({
-  data,
-  update,
-}: {
-  data: FormState;
-  update: <K extends keyof FormState>(k: K, v: FormState[K]) => void;
-}) {
-  return (
-    <div className="space-y-6">
-      <Header
-        label="Section 3"
-        title="Health & energy system"
-        description="Feeds your health dashboard, energy curve, burnout risk analysis, and recovery score."
-      />
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-        <Slider10 value={data.sleepQuality} onChange={(n) => update("sleepQuality", n)} label="Sleep quality" />
-        <Slider10 value={data.dietQuality}  onChange={(n) => update("dietQuality", n)}  label="Diet quality" />
-        <Slider10 value={data.mentalState}  onChange={(n) => update("mentalState", n)}  label="Mental state" />
-      </div>
-      <FieldRow>
-        <Field label="Exercise frequency (×/week)">
-          <Input type="number" value={data.exerciseFreqPerWeek} onChange={(e) => update("exerciseFreqPerWeek", e.target.value)} />
-        </Field>
-        <Field label="Caffeine (mg/day)">
-          <Input type="number" value={data.caffeineMg} onChange={(e) => update("caffeineMg", e.target.value)} />
-        </Field>
-      </FieldRow>
-      <Field label="Fitness goals">
-        <Textarea rows={2} value={data.fitnessGoals} onChange={(e) => update("fitnessGoals", e.target.value)} />
-      </Field>
-      <Field label="Stress triggers">
-        <Textarea rows={2} value={data.stressTriggers} onChange={(e) => update("stressTriggers", e.target.value)} />
-      </Field>
-      <Field label="Energy crashes">
-        <Textarea rows={2} value={data.energyCrashes} onChange={(e) => update("energyCrashes", e.target.value)} placeholder="Post-lunch slump..." />
-      </Field>
-      <Field label="Medical limitations">
-        <Textarea rows={2} value={data.medicalLimits} onChange={(e) => update("medicalLimits", e.target.value)} placeholder="Anything we should respect" />
-      </Field>
-    </div>
-  );
-}
-
-function Section4({
-  data,
-  update,
-}: {
-  data: FormState;
-  update: <K extends keyof FormState>(k: K, v: FormState[K]) => void;
-}) {
-  return (
-    <div className="space-y-6">
-      <Header
-        label="Section 4"
-        title="Goals & ambition system"
-        description="Used to generate your goal architecture map, priority matrix, milestone tracker and strategic roadmap."
-      />
-      <FieldRow>
-        <Field label="Financial goals">
-          <Textarea rows={2} value={data.financialGoals} onChange={(e) => update("financialGoals", e.target.value)} />
-        </Field>
-        <Field label="Career goals">
-          <Textarea rows={2} value={data.careerGoals} onChange={(e) => update("careerGoals", e.target.value)} />
-        </Field>
-        <Field label="Relationship goals">
-          <Textarea rows={2} value={data.relationshipGoals} onChange={(e) => update("relationshipGoals", e.target.value)} />
-        </Field>
-        <Field label="Learning goals">
-          <Textarea rows={2} value={data.learningGoals} onChange={(e) => update("learningGoals", e.target.value)} />
-        </Field>
-        <Field label="Fitness goals">
-          <Textarea rows={2} value={data.fitnessGoals2} onChange={(e) => update("fitnessGoals2", e.target.value)} />
-        </Field>
-        <Field label="Social goals">
-          <Textarea rows={2} value={data.socialGoals} onChange={(e) => update("socialGoals", e.target.value)} />
-        </Field>
-        <Field label="Business goals">
-          <Textarea rows={2} value={data.businessGoals} onChange={(e) => update("businessGoals", e.target.value)} />
-        </Field>
-        <Field label="Monthly targets">
-          <Textarea rows={2} value={data.monthlyTargets} onChange={(e) => update("monthlyTargets", e.target.value)} />
-        </Field>
-      </FieldRow>
-      <Field label="Long-term vision">
-        <Textarea rows={3} value={data.vision} onChange={(e) => update("vision", e.target.value)} placeholder="Where do you want to be in 5 years?" />
-      </Field>
-      <Field label="Biggest dreams">
-        <Textarea rows={3} value={data.dreams} onChange={(e) => update("dreams", e.target.value)} />
       </Field>
     </div>
   );

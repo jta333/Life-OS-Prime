@@ -1,17 +1,18 @@
+import { format, subDays } from "date-fns";
 import { AppSidebar } from "@/components/layout/app-sidebar";
 import { AppTopbar } from "@/components/layout/app-topbar";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { DemoBanner } from "@/components/layout/demo-banner";
 import { getDashboardSnapshot } from "@/lib/data";
-import { format, subDays } from "date-fns";
 
-function computeStreak(checkins: { check_date: string }[]): number {
-  if (!checkins.length) return 0;
-  const dates = new Set(checkins.map((c) => c.check_date));
+function computeStreak(habitLogs: { log_date: string; completed: boolean }[]): number {
+  const days = new Set(
+    habitLogs.filter((l) => l.completed).map((l) => l.log_date)
+  );
   let streak = 0;
   for (let i = 0; i < 365; i++) {
     const key = format(subDays(new Date(), i), "yyyy-MM-dd");
-    if (dates.has(key)) streak++;
+    if (days.has(key)) streak++;
     else if (i === 0) continue;
     else break;
   }
@@ -24,7 +25,7 @@ export default async function AppLayout({
   children: React.ReactNode;
 }) {
   const snapshot = await getDashboardSnapshot();
-  const streak = computeStreak(snapshot.checkins);
+  const streak = computeStreak(snapshot.habitLogs);
 
   return (
     <div className="flex min-h-screen">

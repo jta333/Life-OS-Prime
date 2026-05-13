@@ -1,39 +1,20 @@
-import { createServerClient, type CookieOptions } from "@supabase/ssr";
-import { cookies } from "next/headers";
+import { createClient as createSb } from "@supabase/supabase-js";
 import {
   SUPABASE_URL,
   SUPABASE_ANON_KEY,
+  SUPABASE_SERVICE_ROLE,
   isSupabaseConfigured,
 } from "./config";
 
-export async function createClient() {
+// Single-user app: no SSR cookies, no auth. We just instantiate a plain
+// supabase client on the server. Prefer the service-role key when available
+// (server-only), fall back to the anon key.
+export function createClient() {
   if (!isSupabaseConfigured()) {
     throw new Error("Supabase is not configured.");
   }
-  const cookieStore = await cookies();
-  return createServerClient(SUPABASE_URL!, SUPABASE_ANON_KEY!, {
-    cookies: {
-      getAll() {
-        return cookieStore.getAll();
-      },
-      setAll(toSet: { name: string; value: string; options: CookieOptions }[]) {
-        try {
-          toSet.forEach(({ name, value, options }) =>
-            cookieStore.set(name, value, options)
-          );
-        } catch {
-          // Server Components cannot set cookies — middleware will refresh.
-        }
-      },
-    },
+  const key = SUPABASE_SERVICE_ROLE || SUPABASE_ANON_KEY!;
+  return createSb(SUPABASE_URL!, key, {
+    auth: { persistSession: false, autoRefreshToken: false },
   });
-}
-
-export async function getUser() {
-  if (!isSupabaseConfigured()) return null;
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  return user;
 }

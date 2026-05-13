@@ -7,22 +7,15 @@ import {
   Sparkles,
   ShieldCheck,
   Activity,
-  Target,
-  Moon,
-  Heart,
+  ScanLine,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { UnicodeBar } from "@/components/dashboard/unicode-bar";
 import { Badge } from "@/components/ui/badge";
-import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 export default function LandingPage() {
-  const cta = isSupabaseConfigured() ? "/sign-up" : "/dashboard";
-  const ctaLabel = isSupabaseConfigured() ? "Begin onboarding" : "Open demo dashboard";
-
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Backdrop atmosphere */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10"
@@ -32,7 +25,6 @@ export default function LandingPage() {
         }}
       />
 
-      {/* Nav */}
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
         <Link href="/" className="flex items-center gap-2.5">
           <div className="relative size-8 rounded-lg bg-gradient-to-br from-gold via-amber to-gold/80 shadow-[0_0_24px_-2px_oklch(0.82_0.14_85/50%)]">
@@ -55,54 +47,42 @@ export default function LandingPage() {
           <a href="#dashboard" className="rounded-md px-3 py-2 text-muted-foreground hover:text-foreground">
             Dashboard
           </a>
-          <a href="#coach" className="rounded-md px-3 py-2 text-muted-foreground hover:text-foreground">
-            Coach
-          </a>
         </div>
-        <div className="flex items-center gap-2">
-          {isSupabaseConfigured() && (
-            <Button asChild size="sm" variant="ghost">
-              <Link href="/sign-in">Sign in</Link>
-            </Button>
-          )}
-          <Button asChild size="sm">
-            <Link href={cta}>
-              {ctaLabel}
-              <ArrowRight className="size-3.5" />
-            </Link>
-          </Button>
-        </div>
+        <Button asChild size="sm">
+          <Link href="/dashboard">
+            Enter dashboard
+            <ArrowRight className="size-3.5" />
+          </Link>
+        </Button>
       </nav>
 
-      {/* Hero */}
       <section className="mx-auto max-w-7xl px-6 pt-12 pb-24 md:pt-24">
         <div className="mx-auto max-w-3xl text-center">
           <Badge variant="outline" className="mb-6">
             <Sparkles className="size-3 text-gold" />
-            Your personal performance operating system
+            Single-user performance OS
           </Badge>
           <h1 className="font-display text-balance text-5xl leading-[1.05] tracking-tight md:text-7xl">
             Operate your life like the world's most disciplined CEO.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-balance text-base text-muted-foreground md:text-lg">
-            LIFE OS PRIME is a luxury-class AI dashboard for elite routines, habit
-            mastery, deep work, energy management, and high-performance living —
-            tracked, scored, and continuously optimized.
+            LIFE OS PRIME is a luxury-class AI dashboard for elite routines,
+            habit mastery, and daily performance — tracked, scored, and
+            continuously optimized.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <Button asChild size="lg">
-              <Link href={cta}>
-                {ctaLabel}
+              <Link href="/onboarding">
+                Begin onboarding
                 <ArrowRight className="size-4" />
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <a href="#system">Tour the system</a>
+              <Link href="/dashboard">Enter dashboard</Link>
             </Button>
           </div>
         </div>
 
-        {/* Mock dashboard preview */}
         <div id="dashboard" className="mt-16">
           <div className="relative mx-auto max-w-5xl">
             <div
@@ -143,7 +123,7 @@ export default function LandingPage() {
                 </div>
                 <div className="mt-6 rounded-xl border border-gold/30 bg-gold/[0.05] p-5">
                   <div className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold">
-                    <Sparkles className="size-3" /> AI Coach insight
+                    <Sparkles className="size-3" /> AI Life Status Overview
                   </div>
                   <p className="text-sm leading-relaxed text-foreground/90">
                     Your <strong>deep work</strong> windows are landing 28% earlier than last week — protect 08:00–10:30 and cap evening screens at 22:30 to compound the gain.
@@ -155,32 +135,24 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* System features */}
       <section id="system" className="mx-auto max-w-7xl px-6 pb-24">
         <div className="mx-auto max-w-2xl text-center">
           <div className="text-[10px] font-semibold uppercase tracking-[0.3em] text-gold/80">
-            The System
+            MVP scope
           </div>
           <h2 className="mt-2 font-display text-3xl md:text-5xl">
-            Seven interlocking modules. One operating system.
+            Three modules. One disciplined loop.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            Every panel feeds the next. Your data becomes a closed loop of
-            measurement → analysis → optimization → execution.
+            Onboarding → Dashboard → Habits. Each closes the loop on the next.
           </p>
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-3">
           {[
-            { icon: Gauge,       title: "Performance Snapshot",   body: "Productivity, discipline, lifestyle, stress and balance — quantified in real time." },
-            { icon: Activity,    title: "Routine Analyzer",       body: "Energy curves, deep-work windows, distractions, time leaks. Engineered, not guessed." },
-            { icon: Heart,       title: "Health & Energy",        body: "Sleep, exercise, hydration, recovery, burnout risk. Continuously monitored." },
-            { icon: Target,      title: "Goal Architecture",      body: "Priority matrix, milestone tracking, strategic roadmap. Vision-to-Tuesday." },
-            { icon: Flame,       title: "Habit OS",               body: "Streaks, consistency scores, discipline analytics, failure detection." },
-            { icon: Sparkles,    title: "AI Coach Mode",          body: "An elite coach, behavioral psychologist, and systems architect, always-on." },
-            { icon: Moon,        title: "Daily Check-In",         body: "12 questions, one score, one tomorrow plan. Two minutes." },
-            { icon: Brain,       title: "Weekly + Monthly Review", body: "Trends, regressions, strategic pivots — automated reports, every cycle." },
-            { icon: ShieldCheck, title: "Discipline Engine",      body: "Detects motivation decline, energy crashes and bad patterns before you do." },
+            { icon: ScanLine, title: "Onboarding", body: "Two-section capture of your life structure and routine. Drives every score." },
+            { icon: Gauge,    title: "Dashboard",  body: "Six KPI scores, balance ring, streak heatmap, energy curve, AI Life Status Overview." },
+            { icon: Flame,    title: "Habits",     body: "Daily tracker with streaks, 12-week consistency heatmap, weekly habit report." },
           ].map((f) => (
             <div key={f.title} className="group rounded-2xl border border-border/60 bg-card/40 p-6 backdrop-blur-md transition-all hover:border-gold/40">
               <div className="mb-4 inline-flex size-10 items-center justify-center rounded-xl bg-gold/10 ring-1 ring-gold/30">
@@ -190,42 +162,6 @@ export default function LandingPage() {
               <p className="mt-1.5 text-sm text-muted-foreground">{f.body}</p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Coach quote */}
-      <section id="coach" className="mx-auto max-w-7xl px-6 pb-24">
-        <div className="relative overflow-hidden rounded-[28px] border border-border/60 bg-card/60 p-8 backdrop-blur-md md:p-14">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0"
-            style={{
-              backgroundImage:
-                "radial-gradient(600px 300px at 90% 10%, oklch(0.78 0.13 85 / 0.18), transparent 60%)",
-            }}
-          />
-          <div className="relative max-w-3xl">
-            <Badge variant="outline" className="mb-5">
-              <Sparkles className="size-3 text-gold" /> AI Coach
-            </Badge>
-            <h2 className="font-display text-3xl md:text-5xl">
-              Never generic. Always personalized.
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              The coach sees your profile, scores, habit history and check-ins —
-              and responds like an elite operator. It detects bottlenecks, burnout risk,
-              motivation decline, energy crashes, and recommends concrete actions with
-              the times of day and triggers attached.
-            </p>
-            <div className="mt-8">
-              <Button asChild size="lg">
-                <Link href={cta}>
-                  {ctaLabel}
-                  <ArrowRight className="size-4" />
-                </Link>
-              </Button>
-            </div>
-          </div>
         </div>
       </section>
 

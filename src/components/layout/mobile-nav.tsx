@@ -2,28 +2,20 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  LayoutDashboard,
-  Flame,
-  CalendarCheck,
-  Sparkles,
-  Target,
-} from "lucide-react";
+import { LayoutDashboard, Flame, ScanLine } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const ITEMS = [
   { href: "/dashboard",  label: "Home",   icon: LayoutDashboard },
   { href: "/habits",     label: "Habits", icon: Flame },
-  { href: "/check-in",   label: "Daily",  icon: CalendarCheck },
-  { href: "/goals",      label: "Goals",  icon: Target },
-  { href: "/coach",      label: "Coach",  icon: Sparkles },
+  { href: "/onboarding", label: "Onboard", icon: ScanLine },
 ];
 
 export function MobileNav() {
   const pathname = usePathname();
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 z-30 border-t border-border/40 bg-background/85 backdrop-blur-md">
-      <ul className="grid grid-cols-5">
+      <ul className="grid grid-cols-3">
         {ITEMS.map((item) => {
           const active = pathname.startsWith(item.href);
           return (
