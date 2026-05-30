@@ -22,9 +22,11 @@ Next.js app.
 
 ## Running locally
 
+Requires Node.js LTS (v20+). Use **npm** (see `CLAUDE.md` for why npm over pnpm):
+
 ```bash
-pnpm install
-pnpm dev
+npm install
+npm run dev
 ```
 
 Open <http://localhost:3000>. The app runs out-of-the-box on **demo data** —
