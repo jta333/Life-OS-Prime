@@ -1,0 +1,58 @@
+# ---- Secrets & environment ----
+# Never commit real credentials. Use .env locally; commit .env.example instead.
+.env
+.env.*
+!.env.example
+*.local
+
+# Keys & certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+id_rsa*
+*.keystore
+secrets.*
+credentials.*
+service-account*.json
+gha-creds-*.json
+
+# Cloud / tool credentials
+.aws/
+.gcloud/
+.netrc
+
+# ---- Node / JavaScript ----
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+dist/
+build/
+.next/
+.nuxt/
+.cache/
+coverage/
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# ---- OS / editor cruft ----
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+*.log
