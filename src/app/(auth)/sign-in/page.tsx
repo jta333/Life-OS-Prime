@@ -3,9 +3,20 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
-import { SignInForm } from "./_form";
+import { GoogleAuthButton } from "../_google-button";
 
-export default function SignInPage() {
+export default async function SignInPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
+  const { error } = await searchParams;
+  const notice =
+    error === "not_authorized"
+      ? "That Google account isn't authorized for this app."
+      : error === "auth"
+        ? "Sign-in failed. Please try again."
+        : null;
   return (
     <div className="relative min-h-screen overflow-hidden">
       <div
@@ -36,9 +47,14 @@ export default function SignInPage() {
           <p className="mt-1 text-sm text-muted-foreground">
             Sign in to continue your performance ritual.
           </p>
+          {notice && (
+            <div className="mt-4 rounded-lg border border-rose-soft/40 bg-rose-soft/10 px-3 py-2 text-xs text-rose-soft">
+              {notice}
+            </div>
+          )}
           {isSupabaseConfigured() ? (
             <div className="mt-6">
-              <SignInForm />
+              <GoogleAuthButton label="Sign in with Google" />
             </div>
           ) : (
             <div className="mt-6 rounded-xl border border-violet/30 bg-violet/10 p-4 text-sm text-violet-soft">
