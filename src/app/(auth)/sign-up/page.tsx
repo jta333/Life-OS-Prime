@@ -3,7 +3,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
-import { SignUpForm } from "./_form";
+import { GoogleAuthButton } from "../_google-button";
 
 export default function SignUpPage() {
   return (
@@ -38,7 +38,7 @@ export default function SignUpPage() {
           </p>
           {isSupabaseConfigured() ? (
             <div className="mt-6">
-              <SignUpForm />
+              <GoogleAuthButton label="Continue with Google" />
             </div>
           ) : (
             <div className="mt-6 rounded-xl border border-violet/30 bg-violet/10 p-4 text-sm text-violet-soft">
