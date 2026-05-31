@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import {
   Gauge,
   ShieldCheck,
@@ -29,6 +30,14 @@ import { HabitChecklist } from "./_components/habit-checklist";
 
 export default async function DashboardPage() {
   const snap = await getDashboardSnapshot();
+
+  // A signed-in user who hasn't completed onboarding has no real scores yet,
+  // so the dashboard would fall back to placeholder sample numbers. Send them
+  // to onboarding instead. (Demo/preview mode keeps the sample dashboard.)
+  if (!snap.isDemo && !snap.profile.onboarded_at) {
+    redirect("/onboarding");
+  }
+
   const { profile, scores, habits, habitLogs, checkins, insights, goals } = snap;
 
   const todayKey = format(new Date(), "yyyy-MM-dd");
