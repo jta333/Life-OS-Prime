@@ -2,7 +2,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { LIFE_OS_PRIME_PERSONA } from "@/lib/persona";
 
 export const COACH_MODEL = "claude-haiku-4-5-20251001";
-export const DEEP_MODEL = "claude-opus-4-7";
+export const DEEP_MODEL = "claude-opus-4-8";
 
 let cached: Anthropic | null = null;
 
