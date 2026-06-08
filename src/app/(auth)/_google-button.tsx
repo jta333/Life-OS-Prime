@@ -26,7 +26,7 @@ export function GoogleAuthButton({
         },
       });
       if (error) throw error;
-      // On success the browser is redirected to Google — keep the spinner up.
+      // On success the browser is redirected to Google, keep the spinner up.
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Google sign-in failed");
       setLoading(false);

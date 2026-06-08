@@ -24,7 +24,7 @@ interface Props {
 
 const STARTERS = [
   "Audit my routine and tell me where the biggest leverage point is.",
-  "What's my single biggest risk this week — burnout, energy, or focus?",
+  "What's my single biggest risk this week, burnout, energy, or focus?",
   "Build me a 7-day plan to fix my mornings.",
   "Where am I leaking time, and what should I cut first?",
 ];
@@ -68,7 +68,7 @@ export function CoachChat({ initialMessages, aiEnabled, isDemo, userName }: Prop
           {
             role: "assistant",
             content:
-              "AI coach is offline — add an `ANTHROPIC_API_KEY` to enable streaming responses. In the meantime, here's a deterministic principle: protect the **first 90 minutes** of your morning for one high-leverage task, and shut down screens by 22:30. Compound those two and most other metrics follow.",
+              "AI coach is offline, add an `ANTHROPIC_API_KEY` to enable streaming responses. In the meantime, here's a deterministic principle: protect the **first 90 minutes** of your morning for one high-leverage task, and shut down screens by 22:30. Compound those two and most other metrics follow.",
           },
         ]);
         setSending(false);

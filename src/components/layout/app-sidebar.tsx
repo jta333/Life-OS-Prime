@@ -104,7 +104,7 @@ export function AppSidebar() {
       </nav>
       <div className="border-t border-border/40 px-5 py-4 text-[10px] uppercase tracking-[0.2em] text-muted-foreground/70">
         <div className="flex items-center justify-between">
-          <span>v0.1 — luxury build</span>
+          <span>v0.1, luxury build</span>
           <span className="size-1.5 rounded-full bg-emerald-soft" />
         </div>
       </div>

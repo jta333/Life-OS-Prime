@@ -63,7 +63,7 @@ export default async function SignInPage({
                 Demo mode active
               </div>
               <p className="text-violet-soft/90">
-                Supabase isn't configured. The full dashboard works with demo data —
+                Supabase isn't configured. The full dashboard works with demo data -
                 no sign-in required.
               </p>
               <Button asChild className="mt-4 w-full">

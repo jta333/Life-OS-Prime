@@ -52,7 +52,7 @@ export default async function GoalsPage() {
       <SectionHeading
         label="Section 4 · Goals & Ambition System"
         title="Goal architecture map"
-        description="Priority matrix, milestone tracker, strategic roadmap — vision to Tuesday."
+        description="Priority matrix, milestone tracker, strategic roadmap, vision to Tuesday."
         icon={Target}
       />
 
@@ -63,7 +63,7 @@ export default async function GoalsPage() {
           </div>
           <div className="mt-1 font-display text-3xl">{goals.length}</div>
           <div className="mt-2 text-sm text-muted-foreground">
-            {urgent.length} priority 1–2 · {completed.length} completed
+            {urgent.length} priority 1-2 · {completed.length} completed
           </div>
           <Separator className="my-4" />
           <div className="text-xs uppercase tracking-widest text-muted-foreground">
@@ -176,7 +176,7 @@ export default async function GoalsPage() {
           ))}
           {goals.length === 0 && (
             <div className="col-span-full rounded-xl border border-dashed border-border/60 p-8 text-center text-sm text-muted-foreground">
-              No goals captured yet — add them via onboarding.
+              No goals captured yet, add them via onboarding.
             </div>
           )}
         </CardContent>

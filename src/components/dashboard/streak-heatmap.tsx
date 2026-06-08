@@ -33,7 +33,7 @@ export function StreakHeatmap({
           return (
             <div
               key={key}
-              title={`${format(date, "MMM d")} — ${Math.round(intensity * 100)}%`}
+              title={`${format(date, "MMM d")}, ${Math.round(intensity * 100)}%`}
               className="size-3 rounded-[3px] border border-border/30"
               style={{
                 backgroundColor:

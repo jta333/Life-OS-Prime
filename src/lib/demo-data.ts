@@ -28,7 +28,7 @@ export const DEMO_PROFILE: Profile = {
   vision:
     "Become an elite full-stack operator who launches a profitable product within 18 months while staying at peak physical and mental performance.",
   persona_goal:
-    "Calm, disciplined, deep-working version of myself — early mornings, focused mid-days, recovery in the evenings.",
+    "Calm, disciplined, deep-working version of myself, early mornings, focused mid-days, recovery in the evenings.",
   main_goals:
     "Ship a SaaS side project, hit a sub-3:30 marathon, build a $50k emergency fund.",
   struggles: "Inconsistent mornings, evening doomscrolling, sporadic deep work.",
@@ -58,7 +58,7 @@ export const DEMO_ROUTINE: RoutineProfile = {
   wake_time: "06:00",
   sleep_time: "23:00",
   morning_routine: "Cold shower, 10-min meditation, espresso, 30-min reading",
-  work_schedule: "9:00–18:00 with two 90-min deep work blocks",
+  work_schedule: "9:00-18:00 with two 90-min deep work blocks",
   exercise_habits: "Strength 3×/week, Zone 2 run 2×/week",
   screen_time_hours: 5.5,
   social_media_hours: 1.2,
@@ -66,7 +66,7 @@ export const DEMO_ROUTINE: RoutineProfile = {
   water_liters: 2.5,
   break_habits: "Pomodoro 90/15, short walks between blocks",
   focus_minutes: 180,
-  peak_hours: "08:00–11:00, 15:00–17:00",
+  peak_hours: "08:00-11:00, 15:00-17:00",
   distractions: "Slack, X, news sites",
   wasted_minutes: 75,
   current_habits:
@@ -240,7 +240,7 @@ export function buildDemoCheckIns(days = 14): DailyCheckIn[] {
       tomorrow_focus: "Morning deep work before email.",
       daily_score: Math.round(60 + r * 35),
       ai_summary:
-        "Solid execution with one recovery gap — protect morning focus and cap evening screens at 22:30.",
+        "Solid execution with one recovery gap, protect morning focus and cap evening screens at 22:30.",
       created_at: subDays(today, d).toISOString(),
     });
   }
@@ -260,7 +260,7 @@ export const DEMO_INSIGHTS: Insight[] = [
 You operated at a **B+ baseline** with strong deep work but slipping evening discipline.
 
 ## 📈 Productivity Trend
-\`████████░░ 78%\` — up 6 points from last week, driven by two protected mornings.
+\`████████░░ 78%\`, up 6 points from last week, driven by two protected mornings.
 
 ## 🔥 Habit Consistency
 | Habit | Completions | Consistency | Verdict |
@@ -271,9 +271,9 @@ You operated at a **B+ baseline** with strong deep work but slipping evening dis
 | Sleep target | 4/7 | 57% | Solid |
 
 ## 🎯 Top 3 Improvements For Next Week
-1. **Cap screens at 22:30** — saves 35 min of sleep debt.
-2. **Move workout to morning** twice — links exercise to peak energy window.
-3. **One-block social media policy** — confine to 13:00–13:20 only.`,
+1. **Cap screens at 22:30**, saves 35 min of sleep debt.
+2. **Move workout to morning** twice, links exercise to peak energy window.
+3. **One-block social media policy**, confine to 13:00-13:20 only.`,
     },
     model: "demo",
     created_at: today.toISOString(),
@@ -286,7 +286,7 @@ export const DEMO_COACH_HISTORY: CoachMessage[] = [
     user_id: DEMO_USER_ID,
     role: "assistant",
     content:
-      "Welcome back, Alex. Your discipline trend is up 6 points — protect this momentum. What's the single focus you want to lock in today?",
+      "Welcome back, Alex. Your discipline trend is up 6 points, protect this momentum. What's the single focus you want to lock in today?",
     tokens_in: null,
     tokens_out: null,
     created_at: subDays(today, 0).toISOString(),

@@ -31,10 +31,10 @@ export default async function SettingsPage() {
           </CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-1 gap-4 p-0 sm:grid-cols-2">
-          <Row label="Name"        value={snap.profile.name ?? "—"} />
-          <Row label="Age"         value={snap.profile.age?.toString() ?? "—"} />
-          <Row label="Country"     value={snap.profile.country ?? "—"} />
-          <Row label="Occupation"  value={snap.profile.occupation ?? "—"} />
+          <Row label="Name"        value={snap.profile.name ?? "-"} />
+          <Row label="Age"         value={snap.profile.age?.toString() ?? "-"} />
+          <Row label="Country"     value={snap.profile.country ?? "-"} />
+          <Row label="Occupation"  value={snap.profile.occupation ?? "-"} />
           <Row label="Timezone"    value={snap.profile.timezone ?? "UTC"} />
           <Row label="Onboarded"   value={snap.profile.onboarded_at ? "Yes" : "No"} />
         </CardContent>
@@ -55,7 +55,7 @@ export default async function SettingsPage() {
           <CardContent className="space-y-3 p-0 text-sm">
             <StatusRow
               ok={supabaseOn}
-              label={supabaseOn ? "Connected — data is persisted." : "Not configured — demo mode is active."}
+              label={supabaseOn ? "Connected, data is persisted." : "Not configured, demo mode is active."}
             />
             <p className="text-xs text-muted-foreground">
               Add the following to your <code className="rounded bg-foreground/[0.07] px-1 py-0.5 font-mono">.env.local</code>:
@@ -81,7 +81,7 @@ SUPABASE_SERVICE_ROLE_KEY=...
           <CardContent className="space-y-3 p-0 text-sm">
             <StatusRow
               ok={aiOn}
-              label={aiOn ? "Coach is live — streaming responses enabled." : "No ANTHROPIC_API_KEY — deterministic scores only."}
+              label={aiOn ? "Coach is live, streaming responses enabled." : "No ANTHROPIC_API_KEY, deterministic scores only."}
             />
             <p className="text-xs text-muted-foreground">
               Add to <code className="rounded bg-foreground/[0.07] px-1 py-0.5 font-mono">.env.local</code>:

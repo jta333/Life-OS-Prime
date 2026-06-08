@@ -78,7 +78,7 @@ export default async function HealthPage() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 p-0 text-sm">
-            <KV icon={Droplets}    label="Water" value={`${health?.water_liters ?? "—"} L`} />
+            <KV icon={Droplets}    label="Water" value={`${health?.water_liters ?? "-"} L`} />
             <KV icon={Dumbbell}    label="Exercise" value={`${health?.exercise_freq_per_week ?? 0}×/week`} />
             <KV icon={ShieldCheck} label="Caffeine" value={`${health?.caffeine_mg ?? 0} mg`} />
           </CardContent>
@@ -93,7 +93,7 @@ export default async function HealthPage() {
           </CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-1 gap-4 p-0 lg:grid-cols-2">
-          <Block title="Stress triggers" body={health?.stress_triggers || "Not captured yet — add via onboarding."} tone="rose" />
+          <Block title="Stress triggers" body={health?.stress_triggers || "Not captured yet, add via onboarding."} tone="rose" />
           <Block title="Energy crashes" body={health?.energy_crashes || "Not captured yet."} tone="amber" />
           <Block title="Medical limits" body={health?.medical_limits || "None on file."} tone="violet" />
           <Block title="Fitness goals" body={health?.fitness_goals || "Set fitness goals in onboarding."} tone="emerald" />
@@ -107,12 +107,12 @@ export default async function HealthPage() {
           </CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-1 gap-3 p-0 md:grid-cols-2 lg:grid-cols-3">
-          <Move title="Protect 7–9 h sleep window" body="Lights down at 22:00, phone in another room. Aim 8 h consistent." />
+          <Move title="Protect 7-9 h sleep window" body="Lights down at 22:00, phone in another room. Aim 8 h consistent." />
           <Move title="Hydrate at 0.5 L pre-workout" body="Prevents the 14:00 crash and improves perceived exertion." />
           <Move title="Two weekly strength + two Zone-2" body="Compounding fat-loss + heart-rate variability gains." />
           <Move title="Caffeine cutoff at 14:00" body="Eliminates the late-afternoon stimulant tail that erodes sleep." />
           <Move title="Sunlight within 30 min of wake" body="Anchors circadian rhythm and morning energy peak." />
-          <Move title="Single shutdown ritual" body="Same trigger every night — your nervous system follows the cue." />
+          <Move title="Single shutdown ritual" body="Same trigger every night, your nervous system follows the cue." />
         </CardContent>
       </Card>
     </div>

@@ -348,7 +348,7 @@ function Section2({
           <Input value={data.breakHabits} onChange={(e) => update("breakHabits", e.target.value)} placeholder="Pomodoro, short walks..." />
         </Field>
         <Field label="Most productive hours">
-          <Input value={data.peakHours} onChange={(e) => update("peakHours", e.target.value)} placeholder="08:00–11:00" />
+          <Input value={data.peakHours} onChange={(e) => update("peakHours", e.target.value)} placeholder="08:00-11:00" />
         </Field>
         <Field label="Wasted minutes / day">
           <Input type="number" value={data.wastedMinutes} onChange={(e) => update("wastedMinutes", e.target.value)} />
