@@ -13,7 +13,7 @@ export default async function CoachPage() {
       <SectionHeading
         label="Section 6 · AI Coach"
         title="Your performance strategist"
-        description="Elite productivity coach, behavioral psychologist, discipline mentor and systems architect — with full context of your data."
+        description="Elite productivity coach, behavioral psychologist, discipline mentor and systems architect, with full context of your data."
         icon={Sparkles}
       />
 

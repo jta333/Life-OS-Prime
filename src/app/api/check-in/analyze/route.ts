@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
       messages: [
         {
           role: "user",
-          content: `Analyze today's check-in. Respond in 2-3 short sentences as the coach — specific, decisive, non-generic. Reference numbers from the data.\n\nDATA:\n${JSON.stringify(checkin, null, 2)}`,
+          content: `Analyze today's check-in. Respond in 2-3 short sentences as the coach, specific, decisive, non-generic. Reference numbers from the data.\n\nDATA:\n${JSON.stringify(checkin, null, 2)}`,
         },
       ],
     });

@@ -28,7 +28,7 @@ export default async function WeeklyReviewPage() {
   const deepWorks = last7.filter((c) => c.deep_work).length;
   const avgSleep = last7.length
     ? (last7.reduce((a, c) => a + (c.sleep_hours ?? 0), 0) / last7.length).toFixed(1)
-    : "—";
+    : "-";
 
   // Habit completions in last 7 days
   const last7Set = new Set(
@@ -94,7 +94,7 @@ export default async function WeeklyReviewPage() {
           <CardHeader className="p-0 pb-3">
             <CardTitle className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
               <TrendingUp className="size-3.5 text-gold" />
-              Energy × productivity — last 7 days
+              Energy × productivity: last 7 days
             </CardTitle>
           </CardHeader>
           <CardContent className="p-0">

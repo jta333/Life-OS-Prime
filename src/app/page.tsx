@@ -86,7 +86,7 @@ export default function LandingPage() {
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-balance text-base text-muted-foreground md:text-lg">
             LIFE OS PRIME is a luxury-class AI dashboard for elite routines, habit
-            mastery, deep work, energy management, and high-performance living —
+            mastery, deep work, energy management, and high-performance living -
             tracked, scored, and continuously optimized.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
@@ -146,7 +146,7 @@ export default function LandingPage() {
                     <Sparkles className="size-3" /> AI Coach insight
                   </div>
                   <p className="text-sm leading-relaxed text-foreground/90">
-                    Your <strong>deep work</strong> windows are landing 28% earlier than last week — protect 08:00–10:30 and cap evening screens at 22:30 to compound the gain.
+                    Your <strong>deep work</strong> windows are landing 28% earlier than last week, protect 08:00-10:30 and cap evening screens at 22:30 to compound the gain.
                   </p>
                 </div>
               </div>
@@ -172,14 +172,14 @@ export default function LandingPage() {
 
         <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-3">
           {[
-            { icon: Gauge,       title: "Performance Snapshot",   body: "Productivity, discipline, lifestyle, stress and balance — quantified in real time." },
+            { icon: Gauge,       title: "Performance Snapshot",   body: "Productivity, discipline, lifestyle, stress and balance, quantified in real time." },
             { icon: Activity,    title: "Routine Analyzer",       body: "Energy curves, deep-work windows, distractions, time leaks. Engineered, not guessed." },
             { icon: Heart,       title: "Health & Energy",        body: "Sleep, exercise, hydration, recovery, burnout risk. Continuously monitored." },
             { icon: Target,      title: "Goal Architecture",      body: "Priority matrix, milestone tracking, strategic roadmap. Vision-to-Tuesday." },
             { icon: Flame,       title: "Habit OS",               body: "Streaks, consistency scores, discipline analytics, failure detection." },
             { icon: Sparkles,    title: "AI Coach Mode",          body: "An elite coach, behavioral psychologist, and systems architect, always-on." },
             { icon: Moon,        title: "Daily Check-In",         body: "12 questions, one score, one tomorrow plan. Two minutes." },
-            { icon: Brain,       title: "Weekly + Monthly Review", body: "Trends, regressions, strategic pivots — automated reports, every cycle." },
+            { icon: Brain,       title: "Weekly + Monthly Review", body: "Trends, regressions, strategic pivots, automated reports, every cycle." },
             { icon: ShieldCheck, title: "Discipline Engine",      body: "Detects motivation decline, energy crashes and bad patterns before you do." },
           ].map((f) => (
             <div key={f.title} className="group rounded-2xl border border-border/60 bg-card/40 p-6 backdrop-blur-md transition-all hover:border-gold/40">
@@ -212,7 +212,7 @@ export default function LandingPage() {
               Never generic. Always personalized.
             </h2>
             <p className="mt-4 text-muted-foreground">
-              The coach sees your profile, scores, habit history and check-ins —
+              The coach sees your profile, scores, habit history and check-ins -
               and responds like an elite operator. It detects bottlenecks, burnout risk,
               motivation decline, energy crashes, and recommends concrete actions with
               the times of day and triggers attached.

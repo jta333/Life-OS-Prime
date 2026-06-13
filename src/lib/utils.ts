@@ -21,7 +21,7 @@ export function initials(name?: string | null): string {
 }
 
 export function formatTime(value?: string | null): string {
-  if (!value) return "—";
+  if (!value) return "-";
   const [h, m] = value.split(":");
   if (!h || !m) return value;
   const hour = Number(h);

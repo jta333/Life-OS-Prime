@@ -45,7 +45,7 @@ export default async function RoutinePage() {
       <SectionHeading
         label="Section 2 · Daily Routine"
         title="Your operating timeline"
-        description="An engineered day — deep work, recovery, wellness and shutdown — calibrated to your peak hours."
+        description="An engineered day, deep work, recovery, wellness and shutdown, calibrated to your peak hours."
         icon={Activity}
       />
 
@@ -59,7 +59,7 @@ export default async function RoutinePage() {
           <CardContent className="space-y-3 p-0 text-sm">
             <Row icon={Sunrise} label="Wake" value={formatTime(routine?.wake_time)} />
             <Row icon={Moon}    label="Sleep" value={formatTime(routine?.sleep_time)} />
-            <Row icon={Zap}     label="Peak hours" value={routine?.peak_hours ?? "—"} />
+            <Row icon={Zap}     label="Peak hours" value={routine?.peak_hours ?? "-"} />
             <Row icon={Coffee}  label="Focus window" value={`${routine?.focus_minutes ?? 90} min`} />
           </CardContent>
         </Card>

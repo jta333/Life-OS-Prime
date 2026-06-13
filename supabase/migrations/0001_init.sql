@@ -1,4 +1,4 @@
--- LIFE OS PRIME — initial schema
+-- LIFE OS PRIME, initial schema
 -- All tables have RLS enabled. Auth is via Supabase Auth (auth.users).
 
 create extension if not exists "pgcrypto";

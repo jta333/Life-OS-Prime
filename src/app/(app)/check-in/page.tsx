@@ -50,7 +50,7 @@ export default async function CheckInPage() {
             ))}
             {!snap.checkins.length && (
               <p className="text-muted-foreground">
-                No history yet — your first check-in starts the streak.
+                No history yet, your first check-in starts the streak.
               </p>
             )}
           </CardContent>

@@ -24,7 +24,7 @@ const display = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "LIFE OS PRIME — Your Personal Performance Operating System",
+  title: "LIFE OS PRIME: Your Personal Performance Operating System",
   description:
     "A luxury-class AI dashboard for elite routines, habit mastery, deep work, energy management, and high-performance living.",
   applicationName: "LIFE OS PRIME",

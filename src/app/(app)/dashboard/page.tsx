@@ -169,7 +169,7 @@ export default async function DashboardPage() {
         <Card className="p-6 lg:col-span-3">
           <CardHeader className="p-0 pb-3">
             <CardTitle className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Energy × Productivity — last 14 days
+              Energy × Productivity: last 14 days
             </CardTitle>
           </CardHeader>
           <CardContent className="p-0">
@@ -204,7 +204,7 @@ export default async function DashboardPage() {
 
       {insights[0]?.payload?.markdown && (
         <InsightCard
-          title="AI Coach — latest insight"
+          title="AI Coach: latest insight"
           markdown={insights[0].payload.markdown as string}
           tone="gold"
         />
@@ -260,7 +260,7 @@ export default async function DashboardPage() {
                 <div className="flex items-center justify-between">
                   <span className="text-muted-foreground">Daily score</span>
                   <span className="font-mono text-gold">
-                    {latestCheckin.daily_score ?? "—"}/100
+                    {latestCheckin.daily_score ?? "-"}/100
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
@@ -298,7 +298,7 @@ export default async function DashboardPage() {
               </>
             ) : (
               <div className="text-muted-foreground">
-                No check-ins yet — start your daily ritual.
+                No check-ins yet, start your daily ritual.
               </div>
             )}
           </CardContent>

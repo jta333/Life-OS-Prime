@@ -48,7 +48,7 @@ export default function SignUpPage() {
               </div>
               <p>
                 Configure Supabase to register users. You can preview the entire
-                system right now — no sign-up needed.
+                system right now, no sign-up needed.
               </p>
               <Button asChild className="mt-4 w-full">
                 <Link href="/dashboard">
