@@ -68,13 +68,20 @@ jet-claude-central repo above. Read it if this session has access to it.
 
 ### HARD RULES, NEVER BREAK THESE
 
+> Numbering matches the brain repo `jet-claude-central` and is FROZEN with gaps: Rules 3 and 5 were
+> retired on 2026-09-07. Do not renumber. New rules start at 9.
+
 1. URLs and file paths ALWAYS in backticks or code blocks. Never plain prose.
-2. JET revenue and individual comp are confidential. Never in any output. Ask Jay first.
-3. Never overwrite Jay's hand-edited docs without explicit permission.
-4. Never delete information without Jay's explicit approval.
-5. No profanity in any output, ever.
+2. Money figures are Jay's eyes only: revenue, margin, EBITDA, LER, salary, hourly rate, payroll
+   totals. Never in any output that could reach staff, a client, or a vendor, drafts included. If a
+   figure seems necessary, ask Jay first and name which figure.
+4. Never delete information without Jay's explicit approval. Propose it, name what goes, and wait.
 6. Writing for Jay or JET defaults to his voice (jay-voice). Confirm, then apply any modifier.
-7. NEVER use em dashes (U+2014). Anywhere, ever. Use a comma, colon, or hyphen.
+7. NEVER use em dashes (U+2014). Anywhere, ever: output, code comments, commits, PR text. Use a
+   comma, colon, or hyphen.
+8. Cut a git worktree off latest `origin/main` before the first edit. Never edit a shared checkout,
+   never commit to `main`.
+
 
 ### POSTURE
 
