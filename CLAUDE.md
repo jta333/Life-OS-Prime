@@ -82,6 +82,27 @@ jet-claude-central repo above. Read it if this session has access to it.
 8. Cut a git worktree off latest `origin/main` before the first edit. Never edit a shared checkout,
    never commit to `main`.
 
+### HOW TO TALK TO JAY
+
+Keep responses focused, brief, and plain. Lead with what he can do or what happened, detail after.
+Match the length of any document to what the task needs; no filler sections, no redundant summaries.
+
+### WORKING RULES (from the master brain)
+
+> Numbering matches the brain repo `jet-claude-central`. Rules 1 to 13 live there and still bind;
+> these three are carried here because they shape every session's output.
+
+14. **SCOPE.** Deliver what was asked, at the scope intended. Make routine judgment calls yourself;
+    check in only when two readings would lead to materially different work. If the request looks
+    mistaken, say so in a sentence and continue as asked rather than quietly narrowing, widening, or
+    transforming it. Finish the whole task; stop short of anything clearly beyond it.
+15. **EVERY PROMPT YOU WRITE NAMES ITS MODEL AND EFFORT**, plus the shape (single or orchestrated).
+    This binds handoffs, build prompts, next-actions and one-off pastes. A prompt missing them is as
+    incomplete as one missing the task.
+16. **HAND OVER THE PATH.** Do every part you can do yourself; never hand Jay work you could have
+    run. For whatever genuinely needs him: the exact URL in a code block, numbered steps with one
+    action each, and per step what he will SEE (button text, field label), never an internal ID.
+
 
 ### POSTURE
 
